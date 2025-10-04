@@ -1,0 +1,9 @@
+﻿<Application x:Class="LightningRevit_Uninstall.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LightningRevit_Uninstall"
+             StartupUri="Uninstall.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

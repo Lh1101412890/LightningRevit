@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>annotations</Nullable>
+		<Platforms>x64</Platforms>
+		<OutputType>Library</OutputType>
+		<UseWindowsForms>True</UseWindowsForms>
+		<UseWPF>True</UseWPF>
+		<AssemblyName>LightningRevit</AssemblyName>
+		<RootNamespace>LightningRevit</RootNamespace>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<Version>1.3.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<DefineConstants>$(DefineConstants);R26</DefineConstants>
+		<DebugType>full</DebugType>
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<DefineConstants>$(DefineConstants);R26</DefineConstants>
+		<DebugType>full</DebugType>
+		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\LightningRevit_V2019\Commands\BackgroundSwitch.cs" Link="Commands\BackgroundSwitch.cs" />
+		<Compile Include="..\LightningRevit_V2019\Commands\Views.cs" Link="Commands\Views.cs" />
+		<Compile Include="..\LightningRevit_V2019\Extension\BoundingBoxXYZExtension.cs" Link="Extension\BoundingBoxXYZExtension.cs" />
+		<Compile Include="..\LightningRevit_V2019\Extension\ImportInstanceExtension.cs" Link="Extension\ImportInstanceExtension.cs" />
+		<Compile Include="..\LightningRevit_V2019\Extension\UIApplicationExtension.cs" Link="Extension\UIApplicationExtension.cs" />
+		<Compile Include="..\LightningRevit_V2019\Extension\XYZExtension.cs" Link="Extension\XYZExtension.cs" />
+		<Compile Include="..\LightningRevit_V2019\LightningApp.cs" Link="LightningApp.cs" />
+		<Compile Include="..\LightningRevit_V2019\LightningExtension\ConnectionElementSelectionFilter.cs" Link="LightningExtension\ConnectionElementSelectionFilter.cs" />
+		<Compile Include="..\LightningRevit_V2019\LightningExtension\ExternalEventHandler.cs" Link="LightningExtension\ExternalEventHandler.cs" />
+		<Compile Include="..\LightningRevit_V2019\LightningExtension\FamilyLoadOptions.cs" Link="LightningExtension\FamilyLoadOptions.cs" />
+		<Compile Include="..\LightningRevit_V2019\LightningExtension\Information.cs" Link="LightningExtension\Information.cs" />
+		<Compile Include="..\LightningRevit_V2019\Models\BeamModel.cs" Link="Models\BeamModel.cs" />
+		<Compile Include="..\LightningRevit_V2019\Models\Column.cs" Link="Models\Column.cs" />
+		<Compile Include="..\LightningRevit_V2019\Models\ColumnDetail.cs" Link="Models\ColumnDetail.cs" />
+		<Compile Include="..\LightningRevit_V2019\Models\Wall.cs" Link="Models\Wall.cs" />
+		<Compile Include="..\LightningRevit_V2019\Models\WallInfo.cs" Link="Models\WallInfo.cs" />
+		<Compile Include="..\LightningRevit_V2019\Views\ConnectionView.xaml.cs" Link="Views\ConnectionView.xaml.cs" />
+		<Compile Include="..\LightningRevit_V2019\Views\CreatBeamView.xaml.cs" Link="Views\CreatBeamView.xaml.cs" />
+		<Compile Include="..\LightningRevit_V2019\Views\CreatWallsColumnsView.xaml.cs" Link="Views\CreatWallsColumnsView.xaml.cs" />
+		<Compile Include="..\LightningRevit_V2019\Views\KeyboardHook.cs" Link="Views\KeyboardHook.cs" />
+		<Compile Include="..\LightningRevit_V2019\Views\ViewBase.cs" Link="Views\ViewBase.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2026.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Commands\" />
+		<Folder Include="Extension\" />
+		<Folder Include="LightningExtension\" />
+		<Folder Include="Models\" />
+		<Folder Include="Views\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Include="..\LightningRevit_V2019\Views\ConnectionView.xaml" Link="Views\ConnectionView.xaml" />
+		<Page Include="..\LightningRevit_V2019\Views\CreatBeamView.xaml" Link="Views\CreatBeamView.xaml" />
+		<Page Include="..\LightningRevit_V2019\Views\CreatWallsColumnsView.xaml" Link="Views\CreatWallsColumnsView.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Lightning\Lightning\Lightning.csproj" />
+	</ItemGroup>
+
+</Project>

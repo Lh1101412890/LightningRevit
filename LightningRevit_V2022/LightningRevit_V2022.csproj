@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39189CA5-F86F-4EC1-AE99-0271DB869FFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LightningRevit</RootNamespace>
+    <AssemblyName>LightningRevit</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;R22</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;R22</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\lightningrevit_v2019\commands\BackgroundSwitch.cs">
+      <Link>Commands\BackgroundSwitch.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Commands\Views.cs">
+      <Link>Commands\Views.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Extension\BoundingBoxXYZExtension.cs">
+      <Link>Extension\BoundingBoxXYZExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Extension\ImportInstanceExtension.cs">
+      <Link>Extension\ImportInstanceExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Extension\UIApplicationExtension.cs">
+      <Link>Extension\UIApplicationExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Extension\XYZExtension.cs">
+      <Link>Extension\XYZExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\lightningrevit_v2019\LightningApp.cs">
+      <Link>LightningApp.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\LightningExtension\ConnectionElementSelectionFilter.cs">
+      <Link>Lightningextension\ConnectionElementSelectionFilter.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\LightningExtension\ExternalEventHandler.cs">
+      <Link>Lightningextension\ExternalEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\LightningExtension\FamilyLoadOptions.cs">
+      <Link>Lightningextension\FamilyLoadOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\lightningrevit_v2019\lightningextension\Information.cs">
+      <Link>Lightningextension\Information.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Models\BeamModel.cs">
+      <Link>Models\BeamModel.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Models\Column.cs">
+      <Link>Models\Column.cs</Link>
+    </Compile>
+    <Compile Include="..\lightningrevit_v2019\models\ColumnDetail.cs">
+      <Link>Models\ColumnDetail.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Models\Wall.cs">
+      <Link>Models\Wall.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Models\WallInfo.cs">
+      <Link>Models\WallInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\lightningrevit_v2019\properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Views\ConnectionView.xaml.cs">
+      <Link>Views\ConnectionView.xaml.cs</Link>
+      <DependentUpon>ConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Views\CreatBeamView.xaml.cs">
+      <Link>Views\CreatBeamView.xaml.cs</Link>
+      <DependentUpon>CreatBeamView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Views\CreatWallsColumnsView.xaml.cs">
+      <Link>Views\CreatWallsColumnsView.xaml.cs</Link>
+      <DependentUpon>CreatWallsColumnsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Views\KeyboardHook.cs">
+      <Link>Views\KeyboardHook.cs</Link>
+    </Compile>
+    <Compile Include="..\LightningRevit_V2019\Views\ViewBase.cs">
+      <Link>Views\ViewBase.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\LightningRevit_V2019\Views\ConnectionView.xaml">
+      <Link>Views\ConnectionView.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\LightningRevit_V2019\Views\CreatBeamView.xaml">
+      <Link>Views\CreatBeamView.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\LightningRevit_V2019\Views\CreatWallsColumnsView.xaml">
+      <Link>Views\CreatWallsColumnsView.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Lightning\Lightning\Lightning.csproj">
+      <Project>{4616756d-8fb0-4158-9a89-acf8fb85757d}</Project>
+      <Name>Lightning</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" ExcludeAssets="runtime">
+      <Version>2022.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

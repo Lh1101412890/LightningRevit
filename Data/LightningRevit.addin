@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>LightningRevit</Name>
+		<Assembly></Assembly>
+		<AddInId></AddInId>
+		<FullClassName>LightningRevit.LightningApp</FullClassName>
+		<VendorId>b站up：不要干施工</VendorId>
+		<VendorDescription>QQ群：785371506, up主页：https://space.bilibili.com/191930682</VendorDescription>
+	</AddIn>
+</RevitAddIns>

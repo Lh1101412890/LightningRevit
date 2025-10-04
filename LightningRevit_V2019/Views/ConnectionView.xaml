@@ -1,0 +1,82 @@
+﻿<local:ViewBase x:Class="LightningRevit.Views.ConnectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LightningRevit.Views"
+             Title="连接设置">
+    <Grid Width="360">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="结构柱" Margin="2,2,2,2"  Grid.Row="0">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="结构柱切结构墙" HorizontalAlignment="Left" IsChecked="True" Checked="CheckBoxS_Checked" Name="check1"></CheckBox>
+                <CheckBox Content="结构柱切结构梁" HorizontalAlignment="Center" IsChecked="True" Checked="CheckBoxS_Checked" Name="check2"></CheckBox>
+                <CheckBox Content="结构柱切结构板" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBoxS_Checked" Name="check3"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="结构墙（勾选结构）" Margin="2,2,2,2" Grid.Row="1">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="结构墙切结构柱" HorizontalAlignment="Left" Checked="CheckBoxS_Checked" Name="check4"></CheckBox>
+                <CheckBox Content="结构墙切结构梁" HorizontalAlignment="Center" IsChecked="True" Checked="CheckBoxS_Checked" Name="check5"></CheckBox>
+                <CheckBox Content="结构墙切结构板" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBoxS_Checked" Name="check6"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="结构梁（结构用途-非其他）" Margin="2,2,2,2" Grid.Row="2">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="结构梁切结构柱" HorizontalAlignment="Left" Checked="CheckBoxS_Checked" Name="check7"></CheckBox>
+                <CheckBox Content="结构梁切结构墙" HorizontalAlignment="Center" Checked="CheckBoxS_Checked" Name="check8"></CheckBox>
+                <CheckBox Content="结构梁切结构板" HorizontalAlignment="Right" IsChecked="True" Checked="CheckBoxS_Checked" Name="check9"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="结构板（勾选结构）" Margin="2,2,2,2" Grid.Row="3">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="结构板切结构柱" HorizontalAlignment="Left" Checked="CheckBoxS_Checked" Name="check10"></CheckBox>
+                <CheckBox Content="结构板切结构墙" HorizontalAlignment="Center" Checked="CheckBoxS_Checked" Name="check11"></CheckBox>
+                <CheckBox Content="结构板切结构梁" HorizontalAlignment="Right" Checked="CheckBoxS_Checked" Name="check12"></CheckBox>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="建筑柱（构造柱）" Margin="2,2,2,2"  Grid.Row="4">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="建筑柱切建筑梁" HorizontalAlignment="Left" IsChecked="True" Click="CheckBoxA_Click" Name="check13"></CheckBox>
+                <CheckBox Content="建筑柱切建筑墙" HorizontalAlignment="Center" IsChecked="True" Click="CheckBoxA_Click" Name="check14"></CheckBox>
+                <CheckBox Content="建筑柱切建筑板" HorizontalAlignment="Right" IsChecked="True" Click="CheckBoxA_Click" Name="check15"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="建筑梁（结构用途-其他）（圈梁、过梁、系梁等）" Margin="2,2,2,2" Grid.Row="5">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="建筑梁切建筑柱" HorizontalAlignment="Left" Click="CheckBoxA_Click" Name="check16"></CheckBox>
+                <CheckBox Content="建筑梁切建筑墙" HorizontalAlignment="Center" IsChecked="True" Click="CheckBoxA_Click" Name="check17"></CheckBox>
+                <CheckBox Content="建筑梁切建筑板" HorizontalAlignment="Right" IsChecked="True" Click="CheckBoxA_Click" Name="check18"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="建筑墙（不勾选结构）（填充墙）" Margin="2,2,2,2" Grid.Row="6">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="建筑墙切建筑柱" HorizontalAlignment="Left" Click="CheckBoxA_Click" Name="check19"></CheckBox>
+                <CheckBox Content="建筑墙切建筑梁" HorizontalAlignment="Center" Click="CheckBoxA_Click" Name="check20"></CheckBox>
+                <CheckBox Content="建筑墙切建筑板" HorizontalAlignment="Right" IsChecked="True" Click="CheckBoxA_Click" Name="check21"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="建筑板（不勾选结构）" Margin="2,2,2,2" Grid.Row="7">
+            <Grid Margin="0,5,0,0">
+                <CheckBox Content="建筑板切建筑柱" HorizontalAlignment="Left" Click="CheckBoxA_Click" Name="check22"></CheckBox>
+                <CheckBox Content="建筑板切建筑梁" HorizontalAlignment="Center" Click="CheckBoxA_Click" Name="check23"></CheckBox>
+                <CheckBox Content="建筑板切建筑墙" HorizontalAlignment="Right" Click="CheckBoxA_Click" Name="check24"></CheckBox>
+            </Grid>
+        </GroupBox>
+        <TextBlock Text="提示：连接设置操作比较耗时，请耐心等待" FontSize="10" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Width="110" TextWrapping="Wrap" Grid.Row="8"/>
+        <CheckBox Content="结构切建筑" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Grid.Row="8" IsChecked="True" Name="check"/>
+        <Button Grid.Row="8" Content="选择" Width="50" Margin="0,0,65,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Connection_Click"/>
+        <Button Grid.Row="8" Content="项目" Width="50" Margin="0,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center" Click="Connection_Click"/>
+    </Grid>
+</local:ViewBase>
