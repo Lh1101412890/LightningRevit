@@ -55,14 +55,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Commands\" />
-		<Folder Include="Extension\" />
-		<Folder Include="LightningExtension\" />
-		<Folder Include="Models\" />
-		<Folder Include="Views\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Page Include="..\LightningRevit_V2019\Views\ConnectionView.xaml" Link="Views\ConnectionView.xaml" />
 		<Page Include="..\LightningRevit_V2019\Views\CreatBeamView.xaml" Link="Views\CreatBeamView.xaml" />
 		<Page Include="..\LightningRevit_V2019\Views\CreatWallsColumnsView.xaml" Link="Views\CreatWallsColumnsView.xaml" />
