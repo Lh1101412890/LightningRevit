@@ -25,6 +25,14 @@
 		<DebugType>full</DebugType>
 		<CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
 	</PropertyGroup>
+	
+	<ItemGroup>
+		<Folder Include="Commands\" />
+		<Folder Include="Extension\" />
+		<Folder Include="LightningExtension\" />
+		<Folder Include="Models\" />
+		<Folder Include="Views\" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Include="..\LightningRevit_V2019\Commands\BackgroundSwitch.cs" Link="Commands\BackgroundSwitch.cs" />
