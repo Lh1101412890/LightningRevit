@@ -18,7 +18,7 @@ namespace LightningRevit.Commands
             Type type = view.GetType();
             if (types.Contains(type))
             {
-                LightningApp.ShowMessage("窗口已经打开了！", 2);
+                LightningApp.ShowMsg("窗口已经打开了！", 2);
                 return;
             }
             view.Show();

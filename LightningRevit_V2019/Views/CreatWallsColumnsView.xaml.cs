@@ -96,18 +96,18 @@ namespace LightningRevit.Views
                 FileInfo fileInfo = new FileInfo(file.Text);
                 if (!fileInfo.Exists)
                 {
-                    LightningApp.ShowMessage("文件不存在", 3);
+                    LightningApp.ShowMsg("文件不存在", 3);
                     return;
                 }
             }
             catch (ArgumentException)
             {
-                LightningApp.ShowMessage("路径不合法", 3);
+                LightningApp.ShowMsg("路径不合法", 3);
                 return;
             }
             if (levels.SelectedIndex == -1)
             {
-                LightningApp.ShowMessage("未选择创建标高", 3);
+                LightningApp.ShowMsg("未选择创建标高", 3);
                 return;
             }
             Close();
@@ -117,21 +117,21 @@ namespace LightningRevit.Views
             XYZ align;
             try
             {
-                LightningApp.ShowMessage("指定基点（同CAD）", 0, true);
+                LightningApp.ShowMsg("指定基点（同CAD）", 0, true);
                 align = uIDocument.Selection.PickPoint("指定基点");
             }
             catch (Autodesk.Revit.Exceptions.OperationCanceledException)
             {
-                LightningApp.ShowMessage("", 0);
+                LightningApp.ShowMsg("", 0);
                 return;
             }
             catch (Autodesk.Revit.Exceptions.InvalidOperationException)
             {
-                LightningApp.ShowMessage("视图未激活，请移动当前视图后重试", 2);
+                LightningApp.ShowMsg("视图未激活，请移动当前视图后重试", 2);
                 return;
             }
 
-            LightningApp.ShowMessage("正在创建结构柱族。。。", 0, true);
+            LightningApp.ShowMsg("正在创建结构柱族。。。", 0, true);
             try
             {
                 XmlDocument xml = new XmlDocument();
@@ -260,7 +260,7 @@ namespace LightningRevit.Views
                     File.Delete(familyFile);
                 }
 
-                LightningApp.ShowMessage("正在创建结构柱。。。", 0, true);
+                LightningApp.ShowMsg("正在创建结构柱。。。", 0, true);
                 //读取平面柱
                 List<Column> columns = new List<Column>();
                 foreach (XmlNode item in root["Columns"].ChildNodes)
@@ -362,7 +362,7 @@ namespace LightningRevit.Views
                     }
                 }
 
-                LightningApp.ShowMessage("正在创建结构墙类型。。。", 0, true);
+                LightningApp.ShowMsg("正在创建结构墙类型。。。", 0, true);
                 //读取墙信息
                 List<WallInfo> wallInfos = new List<WallInfo>();
                 foreach (XmlNode item in root["WallInfos"].ChildNodes)
@@ -386,7 +386,7 @@ namespace LightningRevit.Views
                     transaction.Commit();
                 }
 
-                LightningApp.ShowMessage("正在创建结构墙。。。", 0, true);
+                LightningApp.ShowMsg("正在创建结构墙。。。", 0, true);
                 //读取平面墙
                 List<Models.Wall> walls = new List<Models.Wall>();
                 foreach (XmlNode item in root["Walls"].ChildNodes)
@@ -425,13 +425,13 @@ namespace LightningRevit.Views
                             wall.get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).Set(level2.Id); // 设置墙的顶部标高
                         }
                     }
-                    LightningApp.ShowMessage("创建完成", 2);
+                    LightningApp.ShowMsg("创建完成", 2);
                     transaction.Commit();
                 }
             }
             catch (Exception exp)
             {
-                LightningApp.ShowMessage("创建失败", 2);
+                LightningApp.ShowMsg("创建失败", 2);
                 exp.Log(Information.ErrorLog);
             }
         }

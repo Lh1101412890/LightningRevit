@@ -107,18 +107,18 @@ namespace LightningRevit.Views
                 FileInfo fileInfo = new FileInfo(file.Text);
                 if (!fileInfo.Exists)
                 {
-                    LightningApp.ShowMessage("文件不存在", 3);
+                    LightningApp.ShowMsg("文件不存在", 3);
                     return;
                 }
             }
             catch (ArgumentException)
             {
-                LightningApp.ShowMessage("路径不合法", 3);
+                LightningApp.ShowMsg("路径不合法", 3);
                 return;
             }
             if (levels.SelectedIndex == -1)
             {
-                LightningApp.ShowMessage("未选择创建标高", 3);
+                LightningApp.ShowMsg("未选择创建标高", 3);
                 return;
             }
             Close();
@@ -128,21 +128,21 @@ namespace LightningRevit.Views
             XYZ align;
             try
             {
-                LightningApp.ShowMessage("指定基点（同CAD）", 0, true);
+                LightningApp.ShowMsg("指定基点（同CAD）", 0, true);
                 align = uIDocument.Selection.PickPoint("指定基点");
             }
             catch (Autodesk.Revit.Exceptions.OperationCanceledException)
             {
-                LightningApp.ShowMessage("", 0);
+                LightningApp.ShowMsg("", 0);
                 return;
             }
             catch (Autodesk.Revit.Exceptions.InvalidOperationException)
             {
-                LightningApp.ShowMessage("视图未激活，请移动当前视图后重试", 2);
+                LightningApp.ShowMsg("视图未激活，请移动当前视图后重试", 2);
                 return;
             }
 
-            LightningApp.ShowMessage("创建结构梁", 2);
+            LightningApp.ShowMsg("创建结构梁", 2);
 
 
             FilteredElementCollector collector = new FilteredElementCollector(document);
@@ -157,7 +157,7 @@ namespace LightningRevit.Views
                     string familyPath = Information.GetFileInfo($"族文件\\{app.VersionNumber}\\混凝土 - 矩形梁.rfa").FullName;
                     if (!document.LoadFamily(familyPath, out family))
                     {
-                        LightningApp.ShowMessage("无法加载族文件: " + familyPath, 3);
+                        LightningApp.ShowMsg("无法加载族文件: " + familyPath, 3);
                         return;
                     }
                     transaction.Commit();
@@ -231,7 +231,7 @@ namespace LightningRevit.Views
 
                     if (level == null)
                     {
-                        LightningApp.ShowMessage("未找到指定的标高", 3);
+                        LightningApp.ShowMsg("未找到指定的标高", 3);
                         return;
                     }
 
@@ -239,7 +239,7 @@ namespace LightningRevit.Views
                     Line line = Line.CreateBound(item.Start + align, item.End + align);
                     FamilyInstance beam = document.Create.NewFamilyInstance(line, familySymbol, level, StructuralType.Beam);
                 }
-                LightningApp.ShowMessage("创建完成", 2);
+                LightningApp.ShowMsg("创建完成", 2);
                 trans.Commit();
             }
         }

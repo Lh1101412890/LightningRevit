@@ -20,10 +20,12 @@ namespace LightningRevit
         /// <param name="msg">提示信息</param>
         /// <param name="time">显示时长</param>
         /// <param name="always">是否一直显示</param>
-        public static void ShowMessage(string msg, int time = 0, bool always = false) => Information.God.Showmessage(msg, time, always);
+        public static void ShowMsg(string msg, int time = 0, bool always = false) => Information.God.Showmessage(msg, time, always);
 
         public Result OnStartup(UIControlledApplication application)
         {
+            ShowMsg("LightningRevit插件作者：【不要干施工】，点击去b站充电，插件群：785371506！", 25);
+
             this.application = application;
             assembly = Information.ProductModule.FullName;
 
@@ -87,7 +89,7 @@ namespace LightningRevit
 
         private void CreatOthers()
         {
-            RibbonPanel panel = application.CreateRibbonPanel(Information.Brand, "其他");
+            //RibbonPanel panel = application.CreateRibbonPanel(Information.Brand, "其他");
 
         }
     }

@@ -57,7 +57,7 @@ namespace LightningRevit.Views
         {
             UIDocument uIDocument = uIApplication.ActiveUIDocument;
             Document doc = uIDocument.Document;
-            LightningApp.ShowMessage("正在设置连接，已完成 0 %", 0, true);
+            LightningApp.ShowMsg("正在设置连接，已完成 0 %", 0, true);
 
             FilteredElementCollector collector1;
             FilteredElementCollector collector2;
@@ -86,19 +86,19 @@ namespace LightningRevit.Views
                 IList<Reference> references;
                 try
                 {
-                    LightningApp.ShowMessage("请选择要设置连接的图元", 0, true);
+                    LightningApp.ShowMsg("请选择要设置连接的图元", 0, true);
                     selecting = true;
                     references = uIDocument.Selection.PickObjects(Autodesk.Revit.UI.Selection.ObjectType.Element, new ConnectionElementSelectionFilter(), "请选择要设置连接的图元");
                 }
                 catch (Autodesk.Revit.Exceptions.OperationCanceledException)
                 {
-                    LightningApp.ShowMessage("", 0);
+                    LightningApp.ShowMsg("", 0);
                     selecting = false;
                     return;
                 }
                 catch (Autodesk.Revit.Exceptions.InvalidOperationException)
                 {
-                    LightningApp.ShowMessage("视图未激活，请移动当前视图后重试", 2);
+                    LightningApp.ShowMsg("视图未激活，请移动当前视图后重试", 2);
                     selecting = false;
                     return;
                 }
@@ -369,7 +369,7 @@ namespace LightningRevit.Views
                         ShowProgress();
                     }
                 }
-                LightningApp.ShowMessage("连接设置完成", 2);
+                LightningApp.ShowMsg("连接设置完成", 2);
                 Close();
                 transaction.Commit();
             }
@@ -427,7 +427,7 @@ namespace LightningRevit.Views
             if (percent != temp)
             {
                 percent = temp;
-                LightningApp.ShowMessage("正在设置连接，已完成 " + percent + " %", 0, true);
+                LightningApp.ShowMsg("正在设置连接，已完成 " + percent + " %", 0, true);
             }
         }
 
