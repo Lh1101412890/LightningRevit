@@ -172,7 +172,7 @@ namespace LightningRevit.Views
                     }
 
                     //新建公制结构柱族文档
-                    string file = Information.GetFileInfo($"族文件\\{app.VersionNumber}\\公制结构柱.rft").FullName;
+                    string file = Information.GetFileInfo($"库\\{app.VersionNumber}\\公制结构柱.rft").FullName;
                     Document familyDocument = app.NewFamilyDocument(file);
                     using (Transaction transaction = new Transaction(familyDocument, "创建结构柱族" + detail.Name))
                     {

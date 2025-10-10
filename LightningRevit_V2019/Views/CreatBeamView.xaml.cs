@@ -154,7 +154,7 @@ namespace LightningRevit.Views
                 {
                     transaction.Start();
                     // 导入族类型
-                    string familyPath = Information.GetFileInfo($"族文件\\{app.VersionNumber}\\混凝土 - 矩形梁.rfa").FullName;
+                    string familyPath = Information.GetFileInfo($"库\\{app.VersionNumber}\\混凝土 - 矩形梁.rfa").FullName;
                     if (!document.LoadFamily(familyPath, out family))
                     {
                         LightningApp.ShowMsg("无法加载族文件: " + familyPath, 3);

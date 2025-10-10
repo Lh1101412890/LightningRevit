@@ -38,11 +38,18 @@ namespace Build
             DirectoryInfo release = new($"{local}\\Products\\{product} {fileVersionInfo.ProductVersion}");
             release.Create();
 
+
             //复制Data文件夹
-            DirectoryInfo data = new($"{local}\\{product}\\Data");
             DirectoryInfo ndata = new($"{release.FullName}\\Data");
             ndata.Create();
+            DirectoryInfo data = new($"{local}\\{product}\\Data");
             LTools.XCopy(data, ndata);
+
+            //复制族文件夹
+            DirectoryInfo nku = new($"{release.FullName}\\库");
+            nku.Create();
+            DirectoryInfo ku = new($"{local}\\{product}\\库");
+            LTools.XCopy(ku, nku);
 
             //复制安装程序
             FileInfo setup = new($"{local}\\{product}\\{product}_Install\\bin\\x64\\Release\\Setup.exe");

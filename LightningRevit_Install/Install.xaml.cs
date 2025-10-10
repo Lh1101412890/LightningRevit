@@ -345,12 +345,21 @@ namespace LightningRevit_Install
                         }
                     }
 
-                    //复制dll文件夹下的内容到各个已安装的CAD版本文件夹
+                    //复制dll文件夹下的内容到各个已安装的Revit版本文件夹
                     foreach (var item in strings.Distinct())
                     {
                         DirectoryInfo directoryInfo = new DirectoryInfo(target.FullName + "\\" + item);
                         directoryInfo.Create();
                         DirectoryInfo dll = new DirectoryInfo("dll\\" + item);
+                        CopyDir(dll, directoryInfo);
+                    }
+
+                    //复制库文件夹下的内容到各个已安装的Revit版本文件夹
+                    foreach (var item in strings.Distinct())
+                    {
+                        DirectoryInfo directoryInfo = new DirectoryInfo(target.FullName + "\\库\\" + item);
+                        directoryInfo.Create();
+                        DirectoryInfo dll = new DirectoryInfo("库\\" + item);
                         CopyDir(dll, directoryInfo);
                     }
 
