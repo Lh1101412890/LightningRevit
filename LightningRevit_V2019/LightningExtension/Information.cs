@@ -11,17 +11,15 @@ namespace LightningRevit.LightningExtension
     {
         internal static God God = new God(GodEnum.Revit);
 
+        // 项目位置
+        static readonly string local = "D:\\Visual Studio 2022 Projects";
+
         /// <summary>
         /// "Lightning"
         /// </summary>
         public static string Brand => God.Brand;
 
         public static string ProductName => God.ProductName;
-
-        /// <summary>
-        /// 错误日志路径
-        /// </summary>
-        public static string ErrorLog => God.ErrorLog;
 
         /// <summary>
         /// 获取随包安装文件路径
@@ -77,14 +75,14 @@ namespace LightningRevit.LightningExtension
                     else
                     {
 #if DEBUG
-                        string dr = "Debug";
+                        string ver = "Debug";
 #else
-                        string dr = "Release";
+                        string ver = "Release";
 #endif
 #if R25 || R26
-                        fileInfo = new FileInfo($"D:\\Visual Studio 2022 Projects\\{ProductName}\\{ProductName}_V{Version}\\bin\\x64\\{dr}\\net8.0-windows8.0\\{ProductName}.dll");
+                        fileInfo = new FileInfo($"{local}\\{ProductName}\\{ProductName}_V{Version}\\bin\\x64\\{ver}\\net8.0-windows8.0\\{ProductName}.dll");
 #else
-                        fileInfo = new FileInfo($"D:\\Visual Studio 2022 Projects\\{ProductName}\\{ProductName}_V{Version}\\bin\\x64\\{dr}\\{ProductName}.dll");
+                        fileInfo = new FileInfo($"{local}\\{ProductName}\\{ProductName}_V{Version}\\bin\\x64\\{ver}\\{ProductName}.dll");
 #endif
                     }
                     return fileInfo;

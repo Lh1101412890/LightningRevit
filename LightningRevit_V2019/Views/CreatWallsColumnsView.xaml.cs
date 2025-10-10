@@ -432,7 +432,7 @@ namespace LightningRevit.Views
             catch (Exception exp)
             {
                 LightningApp.ShowMsg("创建失败", 2);
-                exp.Log(Information.ErrorLog);
+                exp.LogTo(Information.God);
             }
         }
 
