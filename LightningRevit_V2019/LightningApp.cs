@@ -20,7 +20,7 @@ namespace LightningRevit
         /// <param name="msg">提示信息</param>
         /// <param name="time">显示时长</param>
         /// <param name="always">是否一直显示</param>
-        public static void ShowMsg(string msg, int time = 0, bool always = false) => Information.God.Showmessage(msg, time, always);
+        public static void ShowMsg(string msg, int time = 0, bool always = false) => Information.God.ShowMessage(msg, time, always);
 
         public Result OnStartup(UIControlledApplication application)
         {
