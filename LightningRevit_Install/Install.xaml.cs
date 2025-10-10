@@ -29,6 +29,7 @@ namespace LightningRevit_Install
     {
         private static bool Installing = false;
         private const string Product = "LightningRevit";
+        private string Version;
         readonly List<string> Versions = new List<string>
         {
             "2019",
@@ -107,7 +108,8 @@ namespace LightningRevit_Install
         private void Install_Loaded(object sender, RoutedEventArgs e)
         {
             DirectoryInfo data = new DirectoryInfo("Data");
-            FileSystemInfo[] fileSystemInfos = data.GetFileSystemInfos("LightningRevit.dll", SearchOption.AllDirectories);
+            DirectoryInfo dll = new DirectoryInfo("dll");
+            FileSystemInfo[] fileSystemInfos = dll.GetFileSystemInfos("LightningRevit.dll", SearchOption.AllDirectories);
             if (fileSystemInfos.Length == 0 || !File.Exists("Data\\Lightning.ico") || !File.Exists("Data\\b站名片.jpg"))
             {
                 MessageBox.Show("数据丢失!", Product);
@@ -138,7 +140,8 @@ namespace LightningRevit_Install
                     i++;
                 }
             });
-            Title = Product + "_" + FileVersionInfo.GetVersionInfo(fileSystemInfos.First().FullName).ProductVersion;
+            Version = FileVersionInfo.GetVersionInfo(fileSystemInfos.First().FullName).ProductVersion;
+            Title = $"{Product}_{Version}";
             location.Text = "C:\\Program Files\\Lightning\\" + Product;
             if (GetRevitState())
             {
@@ -307,6 +310,9 @@ namespace LightningRevit_Install
                             file.Delete();
                         }
                     }
+
+                    //添加插件注册信息
+                    List<string> strings = new List<string>();
                     foreach (string version in Versions)
                     {
                         using (RegistryKey key = Registry.LocalMachine.OpenSubKey($"SOFTWARE\\Autodesk\\Revit\\{version}"))
@@ -331,6 +337,7 @@ namespace LightningRevit_Install
                                             xml.Save($"C:\\ProgramData\\Autodesk\\Revit\\Addins\\{version}\\LightningRevit.addin");
                                         }
                                     }
+                                    strings.Add(version);
                                     registryKey.Close();
                                 }
                             }
@@ -338,15 +345,23 @@ namespace LightningRevit_Install
                         }
                     }
 
+                    //复制dll文件夹下的内容到各个已安装的CAD版本文件夹
+                    foreach (var item in strings.Distinct())
+                    {
+                        DirectoryInfo directoryInfo = new DirectoryInfo(target.FullName + "\\" + item);
+                        directoryInfo.Create();
+                        DirectoryInfo dll = new DirectoryInfo("dll\\" + item);
+                        CopyDir(dll, directoryInfo);
+                    }
+
                     //卸载程序
                     using (RegistryKey registry = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall", true))
                     {
                         using (RegistryKey key = registry.CreateSubKey(Product, true))
                         {
-                            string version = FileVersionInfo.GetVersionInfo($"{target.FullName}\\2019\\LightningRevit.dll").ProductVersion;
                             key.SetValue("DisplayIcon", $"{target.FullName}\\Lightning.ico", RegistryValueKind.String);//图标
                             key.SetValue("DisplayName", Product, RegistryValueKind.String);//显示名称
-                            key.SetValue("DisplayVersion", version, RegistryValueKind.String);//版本
+                            key.SetValue("DisplayVersion", Version, RegistryValueKind.String);//版本
                             key.SetValue("Publisher", "b站up主：不要干施工", RegistryValueKind.String);//发布者
                             key.SetValue("UninstallString", $"{target.FullName}\\uninstall.exe", RegistryValueKind.String);//卸载程序路径
                             key.SetValue("URLInfoAbout", "https://space.bilibili.com/191930682", RegistryValueKind.String);//网页
