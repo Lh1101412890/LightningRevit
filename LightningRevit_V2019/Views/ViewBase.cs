@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using Autodesk.Revit.UI;
 
 using Lightning.Extension;
-using Lightning.Manager;
 
 using LightningRevit.Extension;
 using LightningRevit.LightningExtension;

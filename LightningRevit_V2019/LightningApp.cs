@@ -4,7 +4,6 @@ using Autodesk.Revit.UI;
 
 using Lightning.Extension;
 using Lightning.Information;
-using Lightning.Manager;
 
 using LightningRevit.Commands;
 using LightningRevit.LightningExtension;

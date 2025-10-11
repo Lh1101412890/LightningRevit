@@ -12,7 +12,7 @@ namespace LightningRevit.LightningExtension
         internal static God God = new God(GodEnum.Revit);
 
         // 项目位置
-        static readonly string local = "D:\\Visual Studio 2022 Projects";
+        private static readonly string local = "D:\\Visual Studio 2022 Projects";
 
         /// <summary>
         /// "Lightning"

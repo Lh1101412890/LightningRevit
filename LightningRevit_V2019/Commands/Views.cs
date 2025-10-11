@@ -5,7 +5,6 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-using LightningRevit.LightningExtension;
 using LightningRevit.Views;
 
 namespace LightningRevit.Commands

@@ -13,7 +13,6 @@ using Autodesk.Revit.UI;
 using Lightning.Extension;
 using Lightning.Information;
 
-using LightningRevit.Extension;
 using LightningRevit.LightningExtension;
 using LightningRevit.Models;
 

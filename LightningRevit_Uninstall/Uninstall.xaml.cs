@@ -14,7 +14,7 @@ namespace LightningRevit_Uninstall
     public partial class Uninstall : Window
     {
         private const string Product = "LightningRevit";
-        readonly List<string> Versions = new List<string>
+        private readonly List<string> Versions = new List<string>
         {
             "2019",
             "2020",

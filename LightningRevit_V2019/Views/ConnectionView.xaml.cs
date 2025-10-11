@@ -5,7 +5,6 @@ using System.Linq;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-using LightningRevit.Extension;
 using LightningRevit.LightningExtension;
 
 using Button = System.Windows.Controls.Button;

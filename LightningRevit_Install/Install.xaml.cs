@@ -30,7 +30,7 @@ namespace LightningRevit_Install
         private static bool Installing = false;
         private const string Product = "LightningRevit";
         private string Version;
-        readonly List<string> Versions = new List<string>
+        private readonly List<string> Versions = new List<string>
         {
             "2019",
             "2020",
