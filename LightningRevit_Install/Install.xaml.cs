@@ -312,7 +312,6 @@ namespace LightningRevit_Install
                     }
 
                     //添加插件注册信息
-                    List<string> strings = new List<string>();
                     foreach (string version in Versions)
                     {
                         using (RegistryKey key = Registry.LocalMachine.OpenSubKey($"SOFTWARE\\Autodesk\\Revit\\{version}"))
@@ -337,7 +336,6 @@ namespace LightningRevit_Install
                                             xml.Save($"C:\\ProgramData\\Autodesk\\Revit\\Addins\\{version}\\LightningRevit.addin");
                                         }
                                     }
-                                    strings.Add(version);
                                     registryKey.Close();
                                 }
                             }
@@ -345,6 +343,35 @@ namespace LightningRevit_Install
                         }
                     }
 
+                    List<string> strings = new List<string>();
+                    //获取已安装的Revit版本
+                    foreach (var item in Versions)
+                    {
+                        using (RegistryKey key = Registry.LocalMachine.OpenSubKey($"SOFTWARE\\Autodesk\\Revit\\{item}"))
+                        {
+                            if (key != null)
+                            {
+                                string name = key.GetSubKeyNames().ToList().Find(n => n.Contains(":"));
+                                if (name != default)
+                                {
+                                    using (RegistryKey registryKey = key.OpenSubKey(name))
+                                    {
+                                        object v = registryKey.GetValue("InstallationLocation");
+                                        if (v != null)
+                                        {
+                                            string path = v.ToString();
+                                            if (!string.IsNullOrEmpty(path) && Directory.Exists(path))
+                                            {
+                                                strings.Add(item);
+                                            }
+                                        }
+                                        registryKey.Close();
+                                    }
+                                }
+                                key.Close();
+                            }
+                        }
+                    }
                     //复制dll文件夹下的内容到各个已安装的Revit版本文件夹
                     foreach (var item in strings.Distinct())
                     {
@@ -353,7 +380,6 @@ namespace LightningRevit_Install
                         DirectoryInfo dll = new DirectoryInfo("dll\\" + item);
                         CopyDir(dll, directoryInfo);
                     }
-
                     //复制库文件夹下的内容到各个已安装的Revit版本文件夹
                     foreach (var item in strings.Distinct())
                     {
@@ -363,9 +389,10 @@ namespace LightningRevit_Install
                         CopyDir(dll, directoryInfo);
                     }
 
-                    //卸载程序
+                    //先删除卸载程序再重新添加
                     using (RegistryKey registry = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall", true))
                     {
+                        registry.DeleteSubKeyTree(Product, false);
                         using (RegistryKey key = registry.CreateSubKey(Product, true))
                         {
                             key.SetValue("DisplayIcon", $"{target.FullName}\\Lightning.ico", RegistryValueKind.String);//图标
