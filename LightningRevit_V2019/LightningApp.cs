@@ -3,6 +3,8 @@
 using Autodesk.Revit.UI;
 
 using Lightning.Extension;
+using Lightning.Information;
+using Lightning.Manager;
 
 using LightningRevit.Commands;
 using LightningRevit.LightningExtension;
@@ -13,6 +15,7 @@ namespace LightningRevit
     {
         private string assembly;
         private UIControlledApplication application;
+        private static bool IsGod => PCInfo.IsGod;
 
         /// <summary>
         /// 显示消息
@@ -24,7 +27,8 @@ namespace LightningRevit
 
         public Result OnStartup(UIControlledApplication application)
         {
-            ShowMsg("LightningRevit插件作者：【不要干施工】，点击去b站充电，插件群：785371506！", 25);
+            if (!IsGod)
+                ShowMsg("Lightning插件作者：【不要干施工】，点击去b站充电，插件群：785371506！", 25);
 
             this.application = application;
             assembly = Information.ProductModule.FullName;
