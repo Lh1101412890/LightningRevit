@@ -94,6 +94,7 @@ namespace LightningRevit.Views
 
         private void Hook_KeyDown(object sender, KeyEventArgs e)
         {
+            // Alt + ~ 关闭窗口 
             if (Control.ModifierKeys == Keys.Alt && e.KeyCode == Keys.Oemtilde)
             {
                 Close();

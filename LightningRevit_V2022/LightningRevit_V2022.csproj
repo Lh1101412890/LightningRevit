@@ -116,9 +116,6 @@
       <Link>Views\CreatWallsColumnsView.xaml.cs</Link>
       <DependentUpon>CreatWallsColumnsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="..\LightningRevit_V2019\Views\KeyboardHook.cs">
-      <Link>Views\KeyboardHook.cs</Link>
-    </Compile>
     <Compile Include="..\LightningRevit_V2019\Views\ViewBase.cs">
       <Link>Views\ViewBase.cs</Link>
     </Compile>

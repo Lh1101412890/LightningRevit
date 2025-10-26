@@ -79,7 +79,6 @@
     <Compile Include="Views\CreatWallsColumnsView.xaml.cs">
       <DependentUpon>CreatWallsColumnsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\KeyboardHook.cs" />
     <Compile Include="Views\ViewBase.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -54,7 +54,6 @@
 		<Compile Include="..\LightningRevit_V2019\Views\ConnectionView.xaml.cs" Link="Views\ConnectionView.xaml.cs" />
 		<Compile Include="..\LightningRevit_V2019\Views\CreatBeamView.xaml.cs" Link="Views\CreatBeamView.xaml.cs" />
 		<Compile Include="..\LightningRevit_V2019\Views\CreatWallsColumnsView.xaml.cs" Link="Views\CreatWallsColumnsView.xaml.cs" />
-		<Compile Include="..\LightningRevit_V2019\Views\KeyboardHook.cs" Link="Views\KeyboardHook.cs" />
 		<Compile Include="..\LightningRevit_V2019\Views\ViewBase.cs" Link="Views\ViewBase.cs" />
 	</ItemGroup>
 

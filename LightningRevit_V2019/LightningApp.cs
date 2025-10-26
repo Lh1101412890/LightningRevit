@@ -26,8 +26,7 @@ namespace LightningRevit
 
         public Result OnStartup(UIControlledApplication application)
         {
-            if (!IsGod)
-                ShowMsg("Lightning插件作者：【不要干施工】，点击去b站充电，插件群：785371506！", 25);
+            if (!IsGod) ShowMsg("Lightning插件作者：【不要干施工】，点击去b站充电，插件群：785371506！", 25);
 
             this.application = application;
             assembly = Information.ProductModule.FullName;
